@@ -1,30 +1,30 @@
 
-
 public class UseCase2PalindromeCheckerApp {
 
-    // Main Method - Entry Point of the Program
     public static void main(String[] args) {
 
-        // Hardcoded String Literal
+        System.out.println("====================================");
+        System.out.println("      PALINDROME CHECKER APP");
+        System.out.println("====================================");
+        System.out.println("Version : 1.0");
+        System.out.println("====================================");
+
         String word = "madam";
 
-        // Reverse the String
         String reversed = "";
 
         for (int i = word.length() - 1; i >= 0; i--) {
             reversed = reversed + word.charAt(i);
         }
 
-        // Conditional Statement to Check Palindrome
         if (word.equals(reversed)) {
             System.out.println("The word \"" + word + "\" is a Palindrome.");
         } else {
             System.out.println("The word \"" + word + "\" is NOT a Palindrome.");
         }
 
-        // Program Exit Message
         System.out.println("Program executed successfully.");
-   // UC2: Palindrome Checker Logic
+
 
 String input = "madam";
 String reversed = new StringBuilder(input).reverse().toString();
@@ -53,6 +53,7 @@ public class UC1_ApplicationEntry {
         
         // Flow continues to next use case (for now just message)
         System.out.println("Proceeding to next module...");
+
 
     }
 }
