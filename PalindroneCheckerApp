@@ -1,38 +1,36 @@
+import java.util.Stack;
 
-public class UseCase4PalindromeCheckerApp {
-
-
-public class UseCase2PalindromeCheckerApp {
+public class UC5PalindromeChecker {
 
     public static void main(String[] args) {
 
         System.out.println("=================================");
-        System.out.println("   PALINDROME CHECKER - UC4      ");
+        System.out.println("     PALINDROME CHECKER - UC5    ");
         System.out.println("=================================");
 
         String input = "madam";
 
-        // Convert string to character array
-        char[] characters = input.toCharArray();
+        // Create stack
+        Stack<Character> stack = new Stack<>();
 
-        int start = 0;
-        int end = characters.length - 1;
+        // Push characters into stack
+        for (int i = 0; i < input.length(); i++) {
+            stack.push(input.charAt(i));
+        }
 
         boolean isPalindrome = true;
 
-        // Two-pointer comparison
-        while (start < end) {
+        // Pop and compare
+        for (int i = 0; i < input.length(); i++) {
+            char poppedChar = stack.pop();
 
-            if (characters[start] != characters[end]) {
+            if (input.charAt(i) != poppedChar) {
                 isPalindrome = false;
                 break;
             }
-
-            start++;
-            end--;
         }
 
-        // Result
+        // Print result
         if (isPalindrome) {
             System.out.println("Result: It is a palindrome.");
         } else {
@@ -40,36 +38,5 @@ public class UseCase2PalindromeCheckerApp {
         }
 
         System.out.println("Program executed successfully.");
-
-
-String input = "madam";
-String reversed = new StringBuilder(input).reverse().toString();
-
-if(input.equals(reversed)) {
-    System.out.println("It is a palindrome");
-} else {
-    System.out.println("Not a palindrome");
-}
-
-public class UC1_ApplicationEntry {
-
-    // Main Method - Entry point of Java program
-    public static void main(String[] args) {
-
-        // Display Application Information
-        System.out.println("====================================");
-        System.out.println("      PALINDROME CHECKER APP");
-        System.out.println("====================================");
-        System.out.println("Version : 1.0");
-        System.out.println("Developed By : Thanigaivel Dev");
-        System.out.println("====================================");
-
-        System.out.println("Welcome to the Palindrome Checker Application!");
-        System.out.println("Program is ready to continue...");
-        
-        // Flow continues to next use case (for now just message)
-        System.out.println("Proceeding to next module...");
-
-
     }
 }
