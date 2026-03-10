@@ -1,26 +1,42 @@
 
+public class UseCase4PalindromeCheckerApp {
+
+
 public class UseCase2PalindromeCheckerApp {
 
     public static void main(String[] args) {
 
-        System.out.println("====================================");
-        System.out.println("      PALINDROME CHECKER APP");
-        System.out.println("====================================");
-        System.out.println("Version : 1.0");
-        System.out.println("====================================");
+        System.out.println("=================================");
+        System.out.println("   PALINDROME CHECKER - UC4      ");
+        System.out.println("=================================");
 
-        String word = "madam";
+        String input = "madam";
 
-        String reversed = "";
+        // Convert string to character array
+        char[] characters = input.toCharArray();
 
-        for (int i = word.length() - 1; i >= 0; i--) {
-            reversed = reversed + word.charAt(i);
+        int start = 0;
+        int end = characters.length - 1;
+
+        boolean isPalindrome = true;
+
+        // Two-pointer comparison
+        while (start < end) {
+
+            if (characters[start] != characters[end]) {
+                isPalindrome = false;
+                break;
+            }
+
+            start++;
+            end--;
         }
 
-        if (word.equals(reversed)) {
-            System.out.println("The word \"" + word + "\" is a Palindrome.");
+        // Result
+        if (isPalindrome) {
+            System.out.println("Result: It is a palindrome.");
         } else {
-            System.out.println("The word \"" + word + "\" is NOT a Palindrome.");
+            System.out.println("Result: It is NOT a palindrome.");
         }
 
         System.out.println("Program executed successfully.");
