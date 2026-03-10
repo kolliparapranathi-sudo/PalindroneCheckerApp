@@ -1,4 +1,8 @@
+
 public class UseCase4PalindromeCheckerApp {
+
+
+public class UseCase2PalindromeCheckerApp {
 
     public static void main(String[] args) {
 
@@ -36,5 +40,36 @@ public class UseCase4PalindromeCheckerApp {
         }
 
         System.out.println("Program executed successfully.");
+
+
+String input = "madam";
+String reversed = new StringBuilder(input).reverse().toString();
+
+if(input.equals(reversed)) {
+    System.out.println("It is a palindrome");
+} else {
+    System.out.println("Not a palindrome");
+}
+
+public class UC1_ApplicationEntry {
+
+    // Main Method - Entry point of Java program
+    public static void main(String[] args) {
+
+        // Display Application Information
+        System.out.println("====================================");
+        System.out.println("      PALINDROME CHECKER APP");
+        System.out.println("====================================");
+        System.out.println("Version : 1.0");
+        System.out.println("Developed By : Thanigaivel Dev");
+        System.out.println("====================================");
+
+        System.out.println("Welcome to the Palindrome Checker Application!");
+        System.out.println("Program is ready to continue...");
+        
+        // Flow continues to next use case (for now just message)
+        System.out.println("Proceeding to next module...");
+
+
     }
 }
