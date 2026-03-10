@@ -2,94 +2,88 @@ import java.util.Stack;
 import java.util.Deque;
 import java.util.ArrayDeque;
 
-// Strategy Interface
-interface PalindromeStrategy {
-    boolean checkPalindrome(String input);
-}
+public class UseCase13PalindromeCheckerApp {
 
-// Stack Strategy Implementation
-class StackStrategy implements PalindromeStrategy {
+    // Algorithm 1: Two-Pointer (String)
+    public static boolean twoPointerCheck(String input) {
+        int start = 0, end = input.length() - 1;
+        while (start < end) {
+            if (input.charAt(start) != input.charAt(end)) {
+                return false;
+            }
+            start++;
+            end--;
+        }
+        return true;
+    }
 
-    @Override
-    public boolean checkPalindrome(String input) {
-
+    // Algorithm 2: Stack-based
+    public static boolean stackCheck(String input) {
         Stack<Character> stack = new Stack<>();
-
         for (char ch : input.toCharArray()) {
             stack.push(ch);
         }
-
         for (int i = 0; i < input.length(); i++) {
             if (input.charAt(i) != stack.pop()) {
                 return false;
             }
         }
-
         return true;
     }
-}
 
-// Deque Strategy Implementation
-class DequeStrategy implements PalindromeStrategy {
-
-    @Override
-    public boolean checkPalindrome(String input) {
-
+    // Algorithm 3: Deque-based
+    public static boolean dequeCheck(String input) {
         Deque<Character> deque = new ArrayDeque<>();
-
         for (char ch : input.toCharArray()) {
             deque.addLast(ch);
         }
-
         while (deque.size() > 1) {
             if (!deque.removeFirst().equals(deque.removeLast())) {
                 return false;
             }
         }
-
         return true;
     }
-}
-
-// Context Class
-class PalindromeService {
-
-    private PalindromeStrategy strategy;
-
-    public PalindromeService(PalindromeStrategy strategy) {
-        this.strategy = strategy;
-    }
-
-    public boolean execute(String input) {
-        return strategy.checkPalindrome(input);
-    }
-}
-
-// Main Application
-public class UseCase12PalindromeCheckerApp {
 
     public static void main(String[] args) {
 
         System.out.println("=================================");
-        System.out.println("     PALINDROME CHECKER - UC12   ");
+        System.out.println("   PALINDROME CHECKER - UC13     ");
         System.out.println("=================================");
 
-        String input = "madam";
+        String input = "A man a plan a canal Panama"
+                .replaceAll("\\s+", "")
+                .toLowerCase();
 
-        // Choose strategy dynamically
-        PalindromeStrategy strategy = new StackStrategy();
-        // You can switch to:
-        // PalindromeStrategy strategy = new DequeStrategy();
+        long startTime, endTime;
 
-        PalindromeService service = new PalindromeService(strategy);
+        // Two Pointer Timing
+        startTime = System.nanoTime();
+        boolean result1 = twoPointerCheck(input);
+        endTime = System.nanoTime();
+        long timeTwoPointer = endTime - startTime;
 
-        boolean result = service.execute(input);
+        // Stack Timing
+        startTime = System.nanoTime();
+        boolean result2 = stackCheck(input);
+        endTime = System.nanoTime();
+        long timeStack = endTime - startTime;
 
-        if (result) {
-            System.out.println("Result: It is a palindrome.");
-        } else {
-            System.out.println("Result: It is NOT a palindrome.");
-        }
+        // Deque Timing
+        startTime = System.nanoTime();
+        boolean result3 = dequeCheck(input);
+        endTime = System.nanoTime();
+        long timeDeque = endTime - startTime;
+
+        // Display Results
+        System.out.println("Palindrome Result (Two Pointer): " + result1);
+        System.out.println("Palindrome Result (Stack): " + result2);
+        System.out.println("Palindrome Result (Deque): " + result3);
+
+        System.out.println("\nExecution Time (in nanoseconds):");
+        System.out.println("Two Pointer Approach : " + timeTwoPointer);
+        System.out.println("Stack-Based Approach : " + timeStack);
+        System.out.println("Deque-Based Approach : " + timeDeque);
 
         System.out.println("Program executed successfully.");
     }
