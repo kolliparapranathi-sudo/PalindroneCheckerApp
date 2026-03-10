@@ -195,4 +195,4 @@ By completing this project, you will understand:
 **Pranathi Kollipara**
 
 Engineering Student
-Java | C | C++ | Python | DBMS | Operating Systems
+
