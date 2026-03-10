@@ -1,35 +1,41 @@
-public class UseCase10PalindromeCheckerApp {
+class PalindromeChecker {
 
-    public static void main(String[] args) {
-
-        System.out.println("=================================");
-        System.out.println("     PALINDROME CHECKER - UC10   ");
-        System.out.println("=================================");
-
-        String input = "A man a plan a canal Panama";
-
-        // Step 1: Normalize string
-        String normalized = input.replaceAll("\\s+", "").toLowerCase();
+    // Encapsulated palindrome logic
+    public boolean checkPalindrome(String input) {
 
         int start = 0;
-        int end = normalized.length() - 1;
+        int end = input.length() - 1;
 
-        boolean isPalindrome = true;
-
-        // Step 2: Compare characters
         while (start < end) {
 
-            if (normalized.charAt(start) != normalized.charAt(end)) {
-                isPalindrome = false;
-                break;
+            if (input.charAt(start) != input.charAt(end)) {
+                return false;
             }
 
             start++;
             end--;
         }
 
-        // Print result
-        if (isPalindrome) {
+        return true;
+    }
+}
+
+public class UseCase11PalindromeCheckerApp {
+
+    public static void main(String[] args) {
+
+        System.out.println("=================================");
+        System.out.println("     PALINDROME CHECKER - UC11   ");
+        System.out.println("=================================");
+
+        String input = "madam";
+
+        // Create object of PalindromeChecker
+        PalindromeChecker checker = new PalindromeChecker();
+
+        boolean result = checker.checkPalindrome(input);
+
+        if (result) {
             System.out.println("Result: It is a palindrome.");
         } else {
             System.out.println("Result: It is NOT a palindrome.");
